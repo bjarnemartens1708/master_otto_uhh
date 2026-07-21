@@ -1,0 +1,35 @@
+/* OTTO DS typography. 'OTTO Sans' is proprietary — no @font-face until the user uploads the woff2 files; system grotesques render as fallback. 100% = 16px, rem-based. */
+:root{
+--oc-base-font-family:'OTTO Sans','Helvetica Neue',Arial,sans-serif;
+--oc-base-font-weight-regular:400;
+--oc-base-font-weight-bold:700;
+--oc-base-font-weight-black:900;
+/* scale: size / line-height */
+--oc-font-display300-size:2.5rem;--oc-font-display300-lh:3.125rem;
+--oc-font-display200-size:2.25rem;--oc-font-display200-lh:2.8125rem;
+--oc-font-display100-size:2rem;--oc-font-display100-lh:2.5rem;
+--oc-font-headline300-size:1.5rem;--oc-font-headline300-lh:1.875rem;
+--oc-font-headline200-size:1.25rem;--oc-font-headline200-lh:1.625rem;
+--oc-font-headline100-size:1rem;--oc-font-headline100-lh:1.25rem;
+--oc-font-headline50-size:.875rem;--oc-font-headline50-lh:1.125rem;
+--oc-font-headline25-size:.75rem;--oc-font-headline25-lh:1rem;
+--oc-font-copy125-size:1rem;--oc-font-copy125-lh:1.5rem;
+--oc-font-copy100-size:.875rem;--oc-font-copy100-lh:1.3125rem;
+--oc-font-copy75-size:.75rem;--oc-font-copy75-lh:1.125rem;
+--oc-font-copy50-size:.625rem;--oc-font-copy50-lh:.9375rem;
+}
+body{font-family:var(--oc-base-font-family);color:var(--oc-semantic-color-text-default);margin:0}
+a{color:var(--oc-semantic-color-text-link);text-decoration:underline}
+a:hover{color:var(--oc-base-color-interactive-blue-75)}
+.oc-display300{font-size:var(--oc-font-display300-size);line-height:var(--oc-font-display300-lh);font-weight:900}
+.oc-display200{font-size:var(--oc-font-display200-size);line-height:var(--oc-font-display200-lh);font-weight:900}
+.oc-display100{font-size:var(--oc-font-display100-size);line-height:var(--oc-font-display100-lh);font-weight:900}
+.oc-headline300{font-size:var(--oc-font-headline300-size);line-height:var(--oc-font-headline300-lh);font-weight:700}
+.oc-headline200{font-size:var(--oc-font-headline200-size);line-height:var(--oc-font-headline200-lh);font-weight:700}
+.oc-headline100{font-size:var(--oc-font-headline100-size);line-height:var(--oc-font-headline100-lh);font-weight:700}
+.oc-headline50{font-size:var(--oc-font-headline50-size);line-height:var(--oc-font-headline50-lh);font-weight:700}
+.oc-headline25{font-size:var(--oc-font-headline25-size);line-height:var(--oc-font-headline25-lh);font-weight:700}
+.oc-copy125{font-size:var(--oc-font-copy125-size);line-height:var(--oc-font-copy125-lh);font-weight:400}
+.oc-copy100{font-size:var(--oc-font-copy100-size);line-height:var(--oc-font-copy100-lh);font-weight:400}
+.oc-copy75{font-size:var(--oc-font-copy75-size);line-height:var(--oc-font-copy75-lh);font-weight:400}
+.oc-copy50{font-size:var(--oc-font-copy50-size);line-height:var(--oc-font-copy50-lh);font-weight:400}
