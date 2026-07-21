@@ -1,0 +1,19 @@
+/* OTTO DS spacing (4px increments), border radius, elevation shadows, motion, breakpoints */
+:root{
+--oc-spacing-0:0;--oc-spacing-25:4px;--oc-spacing-50:8px;--oc-spacing-75:12px;--oc-spacing-100:16px;--oc-spacing-150:24px;--oc-spacing-200:32px;--oc-spacing-250:40px;--oc-spacing-300:48px;--oc-spacing-400:64px;
+/* border radius: interactive >=4px, default 8px, large 16px; static max 2px */
+--oc-radius-static:2px;--oc-radius-25:4px;--oc-radius-50:8px;--oc-radius-100:16px;--oc-radius-full:999px;
+--oc-border-width:1px;--oc-border-width-selected:2px;
+--oc-focus-outline:2px solid var(--oc-semantic-color-focus-outline);--oc-focus-offset:2px;
+/* elevation */
+--oc-shadow-200:0 2px 8px rgba(17,17,17,.15);
+--oc-shadow-300:0 4px 16px rgba(17,17,17,.2);
+/* motion */
+--oc-duration-short-50:80ms;/* @kind other */--oc-duration-short-100:120ms;/* @kind other */--oc-duration-short-150:160ms;/* @kind other */
+--oc-duration-medium-50:240ms;/* @kind other */--oc-duration-medium-100:300ms;/* @kind other */--oc-duration-medium-150:360ms;/* @kind other */
+--oc-duration-long-50:420ms;/* @kind other */--oc-duration-long-100:500ms;/* @kind other */--oc-duration-long-150:600ms;/* @kind other */
+--oc-easing-in-out:cubic-bezier(.4,0,.2,1);/* @kind other */--oc-easing-out:cubic-bezier(0,0,.2,1);/* @kind other */--oc-easing-in:cubic-bezier(.4,0,1,1);/* @kind other */--oc-easing-expressive:cubic-bezier(.34,1.4,.64,1);/* @kind other */
+/* breakpoints (reference) */
+--oc-breakpoint-s:360px;--oc-breakpoint-m:448px;--oc-breakpoint-l:768px;--oc-breakpoint-xl:992px;--oc-breakpoint-xxl:1232px;
+}
+@media (prefers-reduced-motion:reduce){:root{--oc-duration-short-50:0ms;/* @kind other */--oc-duration-short-100:0ms;/* @kind other */--oc-duration-short-150:0ms;/* @kind other */--oc-duration-medium-50:0ms;/* @kind other */--oc-duration-medium-100:0ms;/* @kind other */--oc-duration-medium-150:0ms;/* @kind other */--oc-duration-long-50:0ms;/* @kind other */--oc-duration-long-100:0ms;/* @kind other */--oc-duration-long-150:0ms/* @kind other */}}
