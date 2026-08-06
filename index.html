@@ -419,13 +419,13 @@
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="finder-result-1" shape="rect" src="assets/slot-finder-result-1.webp" placeholder="Raum mit neuem grünen Sofa" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ showFinder1Measure }}" hint-placeholder-val="{{ false }}">
-              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="finder-result-1-measure" shape="rect" placeholder="Sofa 1 mit Maßen" hint-size="100%,100%"></x-import>
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="finder-result-1-measure" shape="rect" src="assets/slot-finder-result-1-measure.webp" placeholder="Sofa 1 mit Maßen" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ showFinder2 }}" hint-placeholder-val="{{ false }}">
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="finder-result-2" shape="rect" src="assets/slot-finder-result-2.webp" placeholder="Raum mit Sofa-Alternative" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ showFinder2Measure }}" hint-placeholder-val="{{ false }}">
-              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="finder-result-2-measure" shape="rect" placeholder="Sofa 2 mit Maßen" hint-size="100%,100%"></x-import>
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="finder-result-2-measure" shape="rect" src="assets/slot-finder-result-2-measure.webp" placeholder="Sofa 2 mit Maßen" hint-size="100%,100%"></x-import>
             </sc-if>
           </div>
           <div style="position: absolute; top: 12px; left: 12px; z-index: 2; pointer-events: none;">
@@ -1038,10 +1038,10 @@
             <div style="display: flex; align-items: center; gap: 12px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 12px;">
               <div style="width: 64px; height: 64px; flex: none;">
                 <sc-if value="{{ isWomenGender }}" hint-placeholder-val="{{ false }}">
-                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="camroll-shoes-women" shape="rounded" radius="8" placeholder="Schuhe (Damen)" hint-size="64px,64px"></x-import>
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="camroll-shoes-women" shape="rounded" radius="8" src="assets/slot-camroll-shoes-women.webp" placeholder="Schuhe (Damen)" hint-size="64px,64px"></x-import>
                 </sc-if>
                 <sc-if value="{{ isMenGender }}" hint-placeholder-val="{{ false }}">
-                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="camroll-shoes-men" shape="rounded" radius="8" placeholder="Schuhe (Herren)" hint-size="64px,64px"></x-import>
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="camroll-shoes-men" shape="rounded" radius="8" src="assets/slot-camroll-shoes-men.webp" placeholder="Schuhe (Herren)" hint-size="64px,64px"></x-import>
                 </sc-if>
               </div>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
@@ -1124,7 +1124,7 @@
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="outfit-women-1" shape="rect" src="assets/slot-outfit-women-1.webp" placeholder="Damen Outfit 1 (generiert)" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ showOutfitW2 }}" hint-placeholder-val="{{ false }}">
-              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="outfit-women-2" src="uploads/Gemini_Generated_Image_e2j8vie2j8vie2j8.png" shape="rect" placeholder="Damen Outfit 2 (generiert)" hint-size="100%,100%"></x-import>
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="outfit-women-2" src="assets/outfit-women-2.webp" shape="rect" placeholder="Damen Outfit 2 (generiert)" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ showOutfitM1 }}" hint-placeholder-val="{{ false }}">
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="outfit-men-1" shape="rect" src="assets/slot-outfit-men-1.webp" placeholder="Herren Outfit 1 (generiert)" hint-size="100%,100%"></x-import>
@@ -1163,7 +1163,7 @@
             <div onClick="{{ pickOutfit2 }}" style="width: 96px; height: 128px; border-radius: 8px; overflow: hidden; cursor: pointer; border: {{ thumb2Border }}; box-sizing: border-box; position: relative;">
               <div style="position: absolute; inset: 0;">
                 <sc-if value="{{ isWomenGender }}" hint-placeholder-val="{{ false }}">
-                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="outfit-women-2" src="uploads/Gemini_Generated_Image_e2j8vie2j8vie2j8.png" shape="rect" placeholder="O2" hint-size="100%,100%"></x-import>
+                  <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="outfit-women-2" src="assets/outfit-women-2.webp" shape="rect" placeholder="O2" hint-size="100%,100%"></x-import>
                 </sc-if>
                 <sc-if value="{{ isMenGender }}" hint-placeholder-val="{{ true }}">
                   <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="outfit-men-2" shape="rect" src="assets/slot-outfit-men-2.webp" placeholder="O2" hint-size="100%,100%"></x-import>
@@ -1419,7 +1419,7 @@
               <sc-for list="{{ roomRollCells }}" as="cell" hint-placeholder-count="3">
                 <div onClick="{{ cell.toggle }}" style="position: relative; aspect-ratio: 1; min-width: 0; overflow: hidden; cursor: pointer;">
                   <div style="position: absolute; inset: 0;">
-                    <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ cell.id }}" shape="rect" placeholder="{{ cell.ph }}" hint-size="100%,100%"></x-import>
+                    <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ cell.id }}" shape="rect" src="{{ cell.img }}" placeholder="{{ cell.ph }}" hint-size="100%,100%"></x-import>
                   </div>
                   <sc-if value="{{ cell.selected }}" hint-placeholder-val="{{ false }}">
                     <div style="position: absolute; inset: 0; background: rgba(255,255,255,.3); border: 3px solid #007aff; box-sizing: border-box; pointer-events: none; z-index: 2;"></div>
