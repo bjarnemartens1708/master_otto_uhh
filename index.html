@@ -53,15 +53,21 @@
   <sc-if value="{{ isFlowSelect }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="00 Flow Selection" style="position: absolute; inset: 0; z-index: 50; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px;">
       <div style="font-weight: 700; font-size: 20px; margin-bottom: 8px;">Flow auswählen</div>
-      <div style="width: 240px;">
-        <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" onClick="{{ startFashion }}" hint-size="100%,48px">Fashion</x-import>
-      </div>
-      <div style="width: 240px;">
-        <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" onClick="{{ startFurniture }}" hint-size="100%,48px">Room Builder</x-import>
-      </div>
-      <div style="width: 240px;">
-        <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" onClick="{{ startFinder }}" hint-size="100%,48px">Furniture Finder</x-import>
-      </div>
+      <sc-if value="{{ showFashionEntry }}" hint-placeholder-val="{{ true }}">
+        <div style="width: 240px;">
+          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" onClick="{{ startFashion }}" hint-size="100%,48px">Fashion</x-import>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showRoomBuilderEntry }}" hint-placeholder-val="{{ true }}">
+        <div style="width: 240px;">
+          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" onClick="{{ startFurniture }}" hint-size="100%,48px">Room Builder</x-import>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showFinderEntry }}" hint-placeholder-val="{{ true }}">
+        <div style="width: 240px;">
+          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" onClick="{{ startFinder }}" hint-size="100%,48px">Furniture Finder</x-import>
+        </div>
+      </sc-if>
     </div>
   </sc-if>
   <div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; padding-top: calc(12px + env(safe-area-inset-top)); background: var(--oc-base-color-gray-25); flex: none;">
@@ -136,31 +142,34 @@
           <div style="font-weight: 700; font-size: 26px; line-height: 1.2;">Room Builder</div>
           <div style="font-size: 15px; line-height: 1.45; color: var(--oc-base-color-gray-400); max-width: 320px;">Lass dir von KI dein Zimmer neu einrichten – rund um die Möbel, die du behalten möchtest.</div>
         </div>
-        <div style="padding: 32px 24px; display: flex; flex-direction: column; gap: 24px; flex: 1;">
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="24px,24px"></x-import>
+        <div style="padding: 32px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 16px;">
+            <div style="background: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">1. Zeig uns dein Zimmer</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 1</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Zeig uns dein Zimmer</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Wähle den Raum und lade Fotos hoch – wir erkennen deine Möbel automatisch.</div>
             </div>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="lamp" size="100" hint-size="24px,24px"></x-import>
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 16px;">
+            <div style="background: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="lamp" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">2. Behalte, was du liebst</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 2</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Behalte, was du liebst</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Wähle Möbel aus, die bleiben sollen – und einen Stil, der zu dir passt.</div>
             </div>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sparkles" size="100" hint-size="24px,24px"></x-import>
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-semantic-color-surface-hint); border-radius: 8px; padding: 16px;">
+            <div style="background: var(--oc-base-color-hint-purple-100); color: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sparkles" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">3. Generieren &amp; einrichten</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-hint-purple-100); letter-spacing: .04em;">Schritt 3</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Generieren &amp; einrichten</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Lass dein neues Zimmer generieren und bestelle die Möbel direkt bei OTTO.</div>
             </div>
           </div>
@@ -179,31 +188,34 @@
           <div style="font-weight: 700; font-size: 26px; line-height: 1.2;">Furniture Finder</div>
           <div style="font-size: 15px; line-height: 1.45; color: var(--oc-base-color-gray-400); max-width: 320px;">Tausche gezielt einzelne Möbelstücke in deinem Raum – die KI findet passende Alternativen und zeigt sie direkt bei dir.</div>
         </div>
-        <div style="padding: 32px 24px; display: flex; flex-direction: column; gap: 24px; flex: 1;">
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="24px,24px"></x-import>
+        <div style="padding: 32px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 16px;">
+            <div style="background: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">1. Zeig uns deinen Raum</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 1</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Zeig uns deinen Raum</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Wähle den Raum und lade Fotos hoch – wir erkennen deine Möbel automatisch.</div>
             </div>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="repeat" size="100" hint-size="24px,24px"></x-import>
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 16px;">
+            <div style="background: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="repeat" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">2. Wähle, was ersetzt wird</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 2</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Wähle, was ersetzt wird</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Markiere die Möbel, die du austauschen möchtest, und setze optionale Wünsche.</div>
             </div>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sparkles" size="100" hint-size="24px,24px"></x-import>
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-semantic-color-surface-hint); border-radius: 8px; padding: 16px;">
+            <div style="background: var(--oc-base-color-hint-purple-100); color: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sparkles" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">3. Finden &amp; bestellen</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-hint-purple-100); letter-spacing: .04em;">Schritt 3</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Finden &amp; bestellen</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Sieh die neuen Stücke direkt in deinem Raum und bestelle sie bei OTTO.</div>
             </div>
           </div>
@@ -237,18 +249,30 @@
         <div style="font-size: 13px; font-weight: 700; color: var(--oc-base-color-hint-purple-100); letter-spacing: .04em; margin-bottom: 8px;">Schritt 2 von 3</div>
         <div style="font-weight: 700; font-size: 24px; line-height: 1.25; margin-bottom: 8px;">Zeig uns dein Wohnzimmer</div>
         <div style="font-size: 15px; line-height: 1.4; color: var(--oc-base-color-gray-400); margin-bottom: 24px;">Lade Fotos von deinem Zimmer hoch. So bekommst du die besten Ergebnisse:</div>
-        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">1</span>
-            <span style="font-size: 14px; line-height: 1.4;">Fotografiere bei Tageslicht</span>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
+          <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+            <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sun" size="100" hint-size="20px,20px"></x-import>
+            </span>
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Fotografiere bei Tageslicht</span>
+            </span>
           </div>
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">2</span>
-            <span style="font-size: 14px; line-height: 1.4;">Nimm den ganzen Raum aus mehreren Blickwinkeln auf</span>
+          <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+            <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="20px,20px"></x-import>
+            </span>
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Nimm den ganzen Raum aus mehreren Blickwinkeln auf</span>
+            </span>
           </div>
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">3</span>
-            <span style="font-size: 14px; line-height: 1.4;">Achte darauf, dass das Möbelstück gut sichtbar ist</span>
+          <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+            <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="image" size="100" hint-size="20px,20px"></x-import>
+            </span>
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Achte darauf, dass das Möbelstück gut sichtbar ist</span>
+            </span>
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -259,7 +283,6 @@
               </span>
               <span style="display: flex; flex-direction: column; gap: 2px;">
                 <span style="font-weight: 700; font-size: 16px;">Foto aufnehmen</span>
-                <span style="font-size: 13px; color: var(--oc-base-color-gray-400);">Fotografiere dein Zimmer direkt</span>
               </span>
             </span>
           </x-import>
@@ -270,7 +293,6 @@
               </span>
               <span style="display: flex; flex-direction: column; gap: 2px;">
                 <span style="font-weight: 700; font-size: 16px;">Aus deinen Fotos wählen</span>
-                <span style="font-size: 13px; color: var(--oc-base-color-gray-400);">Wähle Bilder aus deiner Mediathek</span>
               </span>
             </span>
           </x-import>
@@ -575,18 +597,30 @@
         <div style="font-size: 13px; font-weight: 700; color: var(--oc-base-color-hint-purple-100); letter-spacing: .04em; margin-bottom: 8px;">Schritt 2 von 3</div>
         <div style="font-weight: 700; font-size: 24px; line-height: 1.25; margin-bottom: 8px;">Zeig uns dein Wohnzimmer</div>
         <div style="font-size: 15px; line-height: 1.4; color: var(--oc-base-color-gray-400); margin-bottom: 24px;">Lade Fotos von deinem Zimmer hoch. So bekommst du die besten Ergebnisse:</div>
-        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">1</span>
-            <span style="font-size: 14px; line-height: 1.4;">Fotografiere bei Tageslicht</span>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
+          <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+            <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sun" size="100" hint-size="20px,20px"></x-import>
+            </span>
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Fotografiere bei Tageslicht</span>
+            </span>
           </div>
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">2</span>
-            <span style="font-size: 14px; line-height: 1.4;">Nimm den ganzen Raum aus mehreren Blickwinkeln auf</span>
+          <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+            <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="20px,20px"></x-import>
+            </span>
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Nimm den ganzen Raum aus mehreren Blickwinkeln auf</span>
+            </span>
           </div>
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">3</span>
-            <span style="font-size: 14px; line-height: 1.4;">Achte darauf, dass alle Möbel gut sichtbar sind</span>
+          <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+            <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="image" size="100" hint-size="20px,20px"></x-import>
+            </span>
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Achte darauf, dass alle Möbel gut sichtbar sind</span>
+            </span>
           </div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 12px;">
@@ -597,7 +631,6 @@
               </span>
               <span style="display: flex; flex-direction: column; gap: 2px;">
                 <span style="font-weight: 700; font-size: 16px;">Foto aufnehmen</span>
-                <span style="font-size: 13px; color: var(--oc-base-color-gray-400);">Fotografiere dein Zimmer direkt</span>
               </span>
             </span>
           </x-import>
@@ -608,7 +641,6 @@
               </span>
               <span style="display: flex; flex-direction: column; gap: 2px;">
                 <span style="font-weight: 700; font-size: 16px;">Aus deinen Fotos wählen</span>
-                <span style="font-size: 13px; color: var(--oc-base-color-gray-400);">Wähle Bilder aus deiner Mediathek</span>
               </span>
             </span>
           </x-import>
@@ -924,31 +956,34 @@
           <div style="font-weight: 700; font-size: 26px; line-height: 1.2;">Outfit-Generator</div>
           <div style="font-size: 15px; line-height: 1.45; color: var(--oc-base-color-gray-400); max-width: 320px;">Lass dir von KI ein komplettes Outfit zusammenstellen – und probiere es virtuell an, bevor du es bestellst.</div>
         </div>
-        <div style="padding: 32px 24px; display: flex; flex-direction: column; gap: 24px; flex: 1;">
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="person" size="100" hint-size="24px,24px"></x-import>
+        <div style="padding: 32px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 16px;">
+            <div style="background: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="person" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">1. Sag uns, für wen und wofür</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 1</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Sag uns, für wen und wofür</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Wähle aus, für wen das Outfit ist und zu welchem Anlass du es tragen möchtest.</div>
             </div>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="24px,24px"></x-import>
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 16px;">
+            <div style="background: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">2. Bring eigene Teile mit</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 2</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Bring eigene Teile mit</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Fotografiere Lieblingsstücke aus deinem Schrank – die KI baut das Outfit darum herum.</div>
             </div>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 16px;">
-            <div style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 48px; height: 48px; flex: none; display: flex; align-items: center; justify-content: center;">
-              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sparkles" size="100" hint-size="24px,24px"></x-import>
+          <div style="display: flex; align-items: flex-start; gap: 14px; background: var(--oc-semantic-color-surface-hint); border-radius: 8px; padding: 16px;">
+            <div style="background: var(--oc-base-color-hint-purple-100); color: #fff; border-radius: 50%; width: 40px; height: 40px; flex: none; display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sparkles" size="100" hint-size="20px,20px"></x-import>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-              <div style="font-weight: 700; font-size: 16px;">3. Generieren &amp; anprobieren</div>
+            <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px;">
+              <div style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-hint-purple-100); letter-spacing: .04em;">Schritt 3</div>
+              <div style="font-weight: 700; font-size: 16px; line-height: 1.3;">Generieren &amp; anprobieren</div>
               <div style="font-size: 14px; line-height: 1.4; color: var(--oc-base-color-gray-400);">Lass Outfits generieren und sieh mit der virtuellen Anprobe, wie sie an dir aussehen.</div>
             </div>
           </div>
@@ -1016,7 +1051,6 @@
               </span>
               <span style="display: flex; flex-direction: column; gap: 2px;">
                 <span style="font-weight: 700; font-size: 16px;">Foto aufnehmen</span>
-                <span style="font-size: 13px; color: var(--oc-base-color-gray-400);">Fotografiere ein Kleidungsstück direkt</span>
               </span>
             </span>
           </x-import>
@@ -1027,7 +1061,6 @@
               </span>
               <span style="display: flex; flex-direction: column; gap: 2px;">
                 <span style="font-weight: 700; font-size: 16px;">Aus deinen Fotos wählen</span>
-                <span style="font-size: 13px; color: var(--oc-base-color-gray-400);">Wähle Bilder aus deiner Mediathek</span>
               </span>
             </span>
           </x-import>
@@ -1183,22 +1216,42 @@
         <sc-if value="{{ notVtoLoading }}" hint-placeholder-val="{{ true }}">
           <div style="font-weight: 700; font-size: 24px; line-height: 1.25; margin-bottom: 8px;">Virtuelle Anprobe</div>
           <div style="font-size: 15px; line-height: 1.4; color: var(--oc-base-color-gray-400); margin-bottom: 24px;">Lade Fotos von dir hoch, damit wir dir zeigen können, wie das Outfit an dir aussieht. So funktioniert's:</div>
-          <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">1</span>
-              <span style="font-size: 14px; line-height: 1.4;">Stell dich vor eine ruhige, helle Wand</span>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+              <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+                <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="image" size="100" hint-size="20px,20px"></x-import>
+              </span>
+              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 1</span>
+                <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Stell dich vor eine ruhige, helle Wand</span>
+              </span>
             </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">2</span>
-              <span style="font-size: 14px; line-height: 1.4;">Nimm dich einmal von vorne und von der Seite auf</span>
+            <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+              <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+                <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="camera" size="100" hint-size="20px,20px"></x-import>
+              </span>
+              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 2</span>
+                <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Nimm dich einmal von vorne und von der Seite auf</span>
+              </span>
             </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">3</span>
-              <span style="font-size: 14px; line-height: 1.4;">Trag körpernahe Kleidung, damit wir deine Maße berücksichtigen können</span>
+            <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-base-color-gray-25); border-radius: 8px; padding: 14px 16px;">
+              <span style="background: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+                <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="ruler" size="100" hint-size="20px,20px"></x-import>
+              </span>
+              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-gray-400); letter-spacing: .04em;">Schritt 3</span>
+                <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Trag körpernahe Kleidung, damit wir deine Maße berücksichtigen können</span>
+              </span>
             </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="background: var(--oc-base-color-gray-50); border-radius: 50%; width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">4</span>
-              <span style="font-size: 14px; line-height: 1.4;">Wir erstellen daraus dein persönliches Modell</span>
+            <div style="display: flex; align-items: center; gap: 14px; background: var(--oc-semantic-color-surface-hint); border-radius: 8px; padding: 14px 16px;">
+              <span style="background: var(--oc-base-color-hint-purple-100); color: #fff; border-radius: 50%; width: 36px; height: 36px; flex: none; display: flex; align-items: center; justify-content: center;">
+                <x-import component-from-global-scope="OTTODesignSystem_4763d6.Icon" name="sparkles" size="100" hint-size="20px,20px"></x-import>
+              </span>
+              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 12px; font-weight: 700; color: var(--oc-base-color-hint-purple-100); letter-spacing: .04em;">Schritt 4</span>
+                <span style="font-size: 14px; line-height: 1.35; font-weight: 700;">Wir erstellen daraus dein persönliches Modell</span>
+              </span>
             </div>
           </div>
           <div style="flex: 1;"></div>
@@ -1483,6 +1536,35 @@
 class Component extends DCLogic {
   state = { screen: "flowselect", history: [], gender: null, perm: null, showPicker: false, rollSelected: false, itemAdded: false, outfits: 1, currentOutfit: 1, modelReady: false, triedOn: [] };
   goTo(s) { this.setState(st => ({ screen: s, history: [...st.history, st.screen] })); }
+  componentDidMount() {
+    // flows.json next to index.html toggles which entry buttons appear on screen 0.
+    // Accepts JSON ({"Fashion": true, ...}) or plain "Key: true" lines.
+    fetch("flows.json", { cache: "no-store" })
+      .then(r => (r.ok ? r.text() : Promise.reject()))
+      .then(txt => {
+        let raw = {};
+        try { raw = JSON.parse(txt); } catch (e) {
+          txt.split(/\r?\n/).forEach(line => {
+            const m = line.match(/^\s*([^:#]+?)\s*:\s*(true|false|yes|no|1|0|on|off)\s*$/i);
+            if (m) raw[m[1]] = /^(true|yes|1|on)$/i.test(m[2]);
+          });
+        }
+        const cfg = {};
+        Object.keys(raw).forEach(k => {
+          const key = k.toLowerCase().replace(/[^a-z]/g, "");
+          const val = raw[k];
+          cfg[key] = typeof val === "string" ? /^(true|yes|1|on)$/i.test(val) : !!val;
+        });
+        this.setState({ flowCfg: cfg });
+      })
+      .catch(() => {});
+  }
+  flowOn(...keys) {
+    const cfg = this.state.flowCfg;
+    if (!cfg) return true;
+    for (const k of keys) if (k in cfg) return cfg[k];
+    return true;
+  }
   componentDidUpdate() {
     if (this._lastScreen !== this.state.screen) {
       this._lastScreen = this.state.screen;
@@ -1619,6 +1701,9 @@ class Component extends DCLogic {
       isStorefront: s === "storefront",
       isFlowSelect: s === "flowselect",
       startFashion: () => this.setState({ flow: "fashion", screen: "storefront", history: [] }),
+      showFashionEntry: this.flowOn("fashion"),
+      showRoomBuilderEntry: this.flowOn("roombuilder", "furniture"),
+      showFinderEntry: this.flowOn("furniturefinder", "finder"),
       startFurniture: () => this.setState({ flow: "furniture", screen: "storefront", history: [] }),
       startFinder: () => this.setState({ flow: "finder", screen: "storefront", history: [] }),
       isFashionFlow: (this.state.flow || "fashion") === "fashion",
