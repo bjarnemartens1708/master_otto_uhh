@@ -15,7 +15,14 @@
   <link rel="stylesheet" href="ds/otto/tokens/layout.css">
   <link rel="stylesheet" href="ds/otto/styles.css">
   <script src="ds/otto/dsbundle.js"></script>
-  <script src="flows.js"></script>
+  <script>
+    /* FLOW-EINSTIEGE — hier true/false setzen, speichern, Seite neu laden. */
+    window.FLOWS = {
+      "Fashion": true,
+      "Room Builder": false,
+      "Furniture Finder": true
+    };
+  </script>
   <style>
     html, body { margin: 0; padding: 0; height: 100%; background: var(--oc-base-color-gray-25); }
     body { font-family: var(--oc-base-font-family); color: var(--oc-semantic-color-text-default); -webkit-font-smoothing: antialiased; }
