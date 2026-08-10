@@ -2,6 +2,6 @@
 // Edit the values, commit, reload the page.
 window.FLOWS = {
   "Fashion": true,
-  "Room Builder": true,
+  "Room Builder": false,
   "Furniture Finder": true
 };
