@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="ds/otto/tokens/layout.css">
   <link rel="stylesheet" href="ds/otto/styles.css">
   <script src="ds/otto/dsbundle.js"></script>
+  <script src="flows.js"></script>
   <style>
     html, body { margin: 0; padding: 0; height: 100%; background: var(--oc-base-color-gray-25); }
     body { font-family: var(--oc-base-font-family); color: var(--oc-semantic-color-text-default); -webkit-font-smoothing: antialiased; }
@@ -1537,8 +1538,16 @@ class Component extends DCLogic {
   state = { screen: "flowselect", history: [], gender: null, perm: null, showPicker: false, rollSelected: false, itemAdded: false, outfits: 1, currentOutfit: 1, modelReady: false, triedOn: [] };
   goTo(s) { this.setState(st => ({ screen: s, history: [...st.history, st.screen] })); }
   componentDidMount() {
-    // flows.json next to index.html toggles which entry buttons appear on screen 0.
-    // Accepts JSON ({"Fashion": true, ...}) or plain "Key: true" lines.
+    // flows.js (or flows.json) next to index.html toggles which entry buttons
+    // appear on screen 0. flows.js is preferred: a plain script tag always runs.
+    const read = () => {
+      const w = typeof window !== "undefined" ? window : {};
+      const raw = w.FLOWS || w.flows;
+      if (raw && typeof raw === "object") { this.setFlowCfg(raw); return true; }
+      return false;
+    };
+    if (read()) return;
+    [50, 200, 600].forEach(t => setTimeout(read, t));
     fetch("flows.json", { cache: "no-store" })
       .then(r => (r.ok ? r.text() : Promise.reject()))
       .then(txt => {
@@ -1546,18 +1555,21 @@ class Component extends DCLogic {
         try { raw = JSON.parse(txt); } catch (e) {
           txt.split(/\r?\n/).forEach(line => {
             const m = line.match(/^\s*([^:#]+?)\s*:\s*(true|false|yes|no|1|0|on|off)\s*$/i);
-            if (m) raw[m[1]] = /^(true|yes|1|on)$/i.test(m[2]);
+            if (m) raw[m[1]] = m[2];
           });
         }
-        const cfg = {};
-        Object.keys(raw).forEach(k => {
-          const key = k.toLowerCase().replace(/[^a-z]/g, "");
-          const val = raw[k];
-          cfg[key] = typeof val === "string" ? /^(true|yes|1|on)$/i.test(val) : !!val;
-        });
-        this.setState({ flowCfg: cfg });
+        this.setFlowCfg(raw);
       })
       .catch(() => {});
+  }
+  setFlowCfg(raw) {
+    const cfg = {};
+    Object.keys(raw).forEach(k => {
+      const key = String(k).toLowerCase().replace(/[^a-z]/g, "");
+      const val = raw[k];
+      cfg[key] = typeof val === "string" ? /^(true|yes|1|on)$/i.test(val.trim()) : !!val;
+    });
+    this.setState({ flowCfg: cfg });
   }
   flowOn(...keys) {
     const cfg = this.state.flowCfg;
