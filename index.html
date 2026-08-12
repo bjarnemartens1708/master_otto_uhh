@@ -1950,7 +1950,7 @@ class Component extends DCLogic {
         const sel = this.state.roomSel || [];
         const idx = sel.indexOf(n);
         return {
-          id: "room-angle-" + n, ph: "Wohnzimmer Ansicht " + n,
+          id: "room-angle-" + n, img: "assets/slot-room-angle-" + n + ".webp", ph: "Wohnzimmer Ansicht " + n,
           selected: idx >= 0, badge: String(idx + 1),
           toggle: () => this.setState(st => {
             const cur = st.roomSel || [];
