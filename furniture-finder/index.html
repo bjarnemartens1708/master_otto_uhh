@@ -502,7 +502,7 @@
           <sc-if value="{{ canCompareFinder }}" hint-placeholder-val="{{ false }}">
             <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" variant="secondary" full-width="{{ true }}" onClick="{{ goFinderCompare }}" hint-size="100%,48px">Varianten vergleichen</x-import>
           </sc-if>
-          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" icon="basket" onClick="{{ buyFinder }}" hint-size="100%,48px">{{ finderBuyLabel }}</x-import>
+          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" icon="basket" disabled="{{ finderBuyDisabled }}" onClick="{{ buyFinder }}" hint-size="100%,48px">{{ finderBuyLabel }}</x-import>
           <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" variant="secondary" full-width="{{ true }}" icon="refresh" disabled="{{ finderRegenDisabled }}" onClick="{{ regenerateFinder }}" hint-size="100%,48px">Anderes Möbelstück zeigen</x-import>
         </div>
       </div>
@@ -882,7 +882,7 @@
           <sc-if value="{{ canCompareRooms }}" hint-placeholder-val="{{ false }}">
             <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" variant="secondary" full-width="{{ true }}" onClick="{{ goRoomCompare }}" hint-size="100%,48px">Designs vergleichen</x-import>
           </sc-if>
-          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" icon="basket" onClick="{{ buyRoom }}" hint-size="100%,48px">{{ roomBuyLabel }}</x-import>
+          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" icon="basket" disabled="{{ roomBuyDisabled }}" onClick="{{ buyRoom }}" hint-size="100%,48px">{{ roomBuyLabel }}</x-import>
           <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" variant="secondary" full-width="{{ true }}" icon="refresh" disabled="{{ roomRegenDisabled }}" onClick="{{ regenerateRoom }}" hint-size="100%,48px">Neues Design generieren</x-import>
         </div>
       </div>
@@ -1322,7 +1322,7 @@
           <sc-if value="{{ canCompare }}" hint-placeholder-val="{{ false }}">
             <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" variant="secondary" full-width="{{ true }}" onClick="{{ goCompare }}" hint-size="100%,48px">Anproben vergleichen</x-import>
           </sc-if>
-          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" icon="basket" onClick="{{ addToBasket }}" hint-size="100%,48px">{{ basketLabel }}</x-import>
+          <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" full-width="{{ true }}" icon="basket" disabled="{{ basketDisabled }}" onClick="{{ addToBasket }}" hint-size="100%,48px">{{ basketLabel }}</x-import>
           <x-import component-from-global-scope="OTTODesignSystem_4763d6.Button" variant="text" full-width="{{ true }}" onClick="{{ backToOutfits }}" hint-size="100%,48px">Anderes Outfit anprobieren</x-import>
         </div>
       </div>
@@ -1894,7 +1894,8 @@ class Component extends DCLogic {
         };
       }),
       canCompareFinder: (this.state.finderVariants || 1) >= 2,
-      goFinderCompare: () => this.goTo("finder-compare"),
+      goFinderCompare: () => { this.setState({ finderCompareSeen: true }); this.goTo("finder-compare"); },
+      finderBuyDisabled: !this.state.finderCompareSeen,
       isFinderCompare: s === "finder-compare",
       finderP1: this.getFinderProductFor(1),
       finderP2: this.getFinderProductFor(2),
@@ -2073,7 +2074,8 @@ class Component extends DCLogic {
       roomTotal2: this.getRoomTotal(2),
       buyDesign1: () => { this.setState({ currentDesign: 1, roomDesel: [] }); this.goTo("furn-confirm"); },
       buyDesign2: () => { this.setState({ currentDesign: 2, roomDesel: [] }); this.goTo("furn-confirm"); },
-      goRoomCompare: () => this.goTo("room-compare"),
+      goRoomCompare: () => { this.setState({ roomCompareSeen: true }); this.goTo("room-compare"); },
+      roomBuyDisabled: !this.state.roomCompareSeen,
       roomRegenDisabled: (this.state.roomDesigns || 1) >= 2,
       regenerateRoom: () => {
         this.setState({ screen: "room-generate", roomGenerating: true, roomGenMsg: 0 });
@@ -2189,7 +2191,8 @@ class Component extends DCLogic {
       showTryonM1: this.state.gender !== "women" && (this.state.currentOutfit || 1) === 1,
       showTryonM2: this.state.gender !== "women" && this.state.currentOutfit === 2,
       canCompare: (this.state.triedOn || []).length >= 2,
-      goCompare: () => this.goTo("compare"),
+      goCompare: () => { this.setState({ compareSeen: true }); this.goTo("compare"); },
+      basketDisabled: !this.state.compareSeen,
       comparePos: (this.state.comparePct ?? 50) + "%",
       compareClip: (100 - (this.state.comparePct ?? 50)) + "%",
       comparePointer: (e) => {
