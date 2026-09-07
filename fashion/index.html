@@ -1287,10 +1287,10 @@
         <div style="position: relative; width: 80%; margin: 0 auto 20px; aspect-ratio: 3 / 4; background: var(--oc-base-color-gray-25); border-radius: 16px; overflow: hidden;">
           <div style="position: absolute; inset: 0;">
             <sc-if value="{{ showTryonW1 }}" hint-placeholder-val="{{ false }}">
-              <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-women-1" shape="rect" src="../assets/tryon-women-1-v2.webp" placeholder="Charlie trägt Damen Outfit 1" hint-size="100%,100%"></x-import>
+              <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-women-1" shape="rect" src="../assets/tryon-women-1.webp?v=2" placeholder="Charlie trägt Damen Outfit 1" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ showTryonW2 }}" hint-placeholder-val="{{ true }}">
-              <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-women-2" shape="rect" src="../assets/tryon-women-2-v2.webp" placeholder="Charlie trägt Damen Outfit 2" hint-size="100%,100%"></x-import>
+              <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-women-2" shape="rect" src="../assets/tryon-women-2.webp?v=2" placeholder="Charlie trägt Damen Outfit 2" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ showTryonM1 }}" hint-placeholder-val="{{ false }}">
               <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-men-1" shape="rect" src="../assets/tryon-men-1.webp" placeholder="Charlie trägt Herren Outfit 1" hint-size="100%,100%"></x-import>
@@ -1334,7 +1334,7 @@
         <div onPointerDown="{{ comparePointer }}" onPointerMove="{{ comparePointer }}" onPointerUp="{{ comparePointer }}" onPointerCancel="{{ comparePointer }}" onPointerLeave="{{ comparePointer }}" style="position: relative; width: 100%; aspect-ratio: 3 / 4; background: var(--oc-base-color-gray-25); border-radius: 16px; overflow: hidden; touch-action: none; cursor: ew-resize; margin-bottom: 16px;">
           <div style="position: absolute; inset: 0;">
             <sc-if value="{{ isWomenGender }}" hint-placeholder-val="{{ false }}">
-              <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-women-2" shape="rect" src="../assets/tryon-women-2-v2.webp" placeholder="Charlie trägt Outfit 2" hint-size="100%,100%"></x-import>
+              <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-women-2" shape="rect" src="../assets/tryon-women-2.webp?v=2" placeholder="Charlie trägt Outfit 2" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ isMenGender }}" hint-placeholder-val="{{ true }}">
               <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-men-2" shape="rect" src="../assets/tryon-men-2.webp" placeholder="Charlie trägt Outfit 2" hint-size="100%,100%"></x-import>
@@ -1342,7 +1342,7 @@
           </div>
           <div style="position: absolute; inset: 0; clip-path: inset(0 {{ compareClip }} 0 0);">
             <sc-if value="{{ isWomenGender }}" hint-placeholder-val="{{ false }}">
-              <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-women-1" shape="rect" src="../assets/tryon-women-1-v2.webp" placeholder="Charlie trägt Outfit 1" hint-size="100%,100%"></x-import>
+              <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-women-1" shape="rect" src="../assets/tryon-women-1.webp?v=2" placeholder="Charlie trägt Outfit 1" hint-size="100%,100%"></x-import>
             </sc-if>
             <sc-if value="{{ isMenGender }}" hint-placeholder-val="{{ true }}">
               <x-import component-from-global-scope="image-slot" from="../image-slot.js" id="tryon-men-1" shape="rect" src="../assets/tryon-men-1.webp" placeholder="Charlie trägt Outfit 1" hint-size="100%,100%"></x-import>
