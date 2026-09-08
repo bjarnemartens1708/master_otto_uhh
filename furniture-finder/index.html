@@ -26,6 +26,9 @@
     a { color: var(--oc-semantic-color-text-link); }
     a:hover { color: var(--oc-base-color-otto-red-125); }
     * { -webkit-tap-highlight-color: transparent; }
+    /* the design system's storefront ships its own image-less recommendations
+       row; hide it so the one below with real product photos is used instead */
+    [data-ds-storefront] div:has(> h2) { display: none; }
   </style>
 <template id="__bundler_thumbnail" data-bg-color="#e30613">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +138,18 @@
           </div>
           </sc-if>
         </div>
-        <x-import component-from-global-scope="OTTODesignSystem_4763d6.StorefrontScreen" hint-size="100%,800px"></x-import>
+        <div data-ds-storefront="">
+          <x-import component-from-global-scope="OTTODesignSystem_4763d6.StorefrontScreen" hint-size="100%,800px"></x-import>
+        </div>
+        <div style="padding: 0 0 24px 16px;">
+          <h2 style="font: 700 22px/1.3 var(--oc-base-font-family); margin: 24px 0 16px;">Empfehlungen für dich</h2>
+          <div style="display: flex; gap: 12px; overflow-x: auto; padding-right: 16px; scrollbar-width: none;">
+            <x-import component-from-global-scope="OTTODesignSystem_4763d6.ProductCard" brand="EIGHT2NINE" name="Chinos" img="../assets/reco-chinos.webp" uvp="{{ true }}" old-price="59,90 €" price="39,99 €" discount="-33%" hint-size="150px,280px"></x-import>
+            <x-import component-from-global-scope="OTTODesignSystem_4763d6.ProductCard" brand="NEXT" name="T-Shirt &amp; Shorts Struktur" img="../assets/reco-tshirt-shorts.webp" price="ab 23,00 €" hint-size="150px,280px"></x-import>
+            <x-import component-from-global-scope="OTTODesignSystem_4763d6.ProductCard" brand="SIKSILK" name="T-Shirt &amp; Shorts" img="../assets/reco-shirt-shorts.webp" old-price="64,95 €" price="ab 38,97 €" discount="-40%" hint-size="150px,280px"></x-import>
+            <x-import component-from-global-scope="OTTODesignSystem_4763d6.ProductCard" brand="ADIDAS" name="Sneaker Court" img="../assets/reco-sneaker.webp" price="79,95 €" hint-size="150px,280px"></x-import>
+          </div>
+        </div>
       </div>
     </sc-if>
     <sc-if value="{{ isFurnLanding }}" hint-placeholder-val="{{ false }}">
